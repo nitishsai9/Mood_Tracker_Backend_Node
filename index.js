@@ -22,7 +22,14 @@ router.get('/', function(req, res) {
 //route to handle user registration
 router.post('/register',loginroutes.register);
 router.post('/login',loginroutes.login);
+router.post('/register_faculty',loginroutes.registerfaculty);
+router.post('/login_faculty',loginroutes.loginfaculty);
 router.post('/create_track',loginroutes.insertMood);
-router.post('/get_Student',loginroutes.getStudent)
+router.post('/get_Student',loginroutes.getStudent);
+router.post('/create_key',loginroutes.insertKeys);
+router.post('/get_key',loginroutes.getKeyFaculty);
+router.post('/insert_notifcation',loginroutes.insertNotification);
+router.post('/get_notification',loginroutes.getNotification);
+router.post('/get_facultyId',loginroutes.getFaucltyId);
 app.use('/api', router);
 app.listen(4000);
