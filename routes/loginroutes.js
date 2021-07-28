@@ -111,6 +111,7 @@ exports.register = async function(req,res){
 exports.getStudent = async function(req,res){
   var rollNumber= req.body.rollNumber;
   var className = req.body.className;
+  console.log(rollNumber,className);
   connection.query('SELECT mood FROM real_data_moods WHERE rollNumber = ? and className= ?',[rollNumber,className], async function (error, results, fields) {
     if (error) {
       res.send({
@@ -315,8 +316,8 @@ exports.insertKeys = async function(req,res){
 
 
 exports.getKeyFaculty = async function(req,res){
-  var fkey = req.body.keyName;
-  connection.query('SELECT facultyNumber from facultykeys where keyName = ?',[fkey], function (error, results, fields) {
+  var fkey = req.body.facultyNumber;
+  connection.query('SELECT * from facultykeys where facultyNumber = ?',[fkey], function (error, results, fields) {
     if (error) {
       res.send({
         "code":400,
@@ -390,7 +391,7 @@ exports.getNotification = async function(req,res){
 
 exports.getFaucltyId = async function(req,res){
   var keyName= req.body.keyName;
-  connection.query('SELECT facultyNumber   from facultykeys WHERE keyName = ? ',[keyName], async function (error, results, fields) {
+  connection.query('SELECT facultyNumber from facultykeys WHERE keyName = ? ',[keyName], async function (error, results, fields) {
     if (error) {
       console.log(error);
       res.send({
